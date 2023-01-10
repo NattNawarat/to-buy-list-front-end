@@ -7,6 +7,12 @@ const register = newObject => {
     return  request.then(response =>  response.data)
 }
 
+const login = object =>{
+    const request = axios.post(`${baseUrl}api/users/login`, object)
+    return request
+}
+
 export default{
-    register
+    register,
+    login
 }
