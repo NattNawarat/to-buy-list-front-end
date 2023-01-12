@@ -1,30 +1,46 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-import { useState } from 'react'
-import { OpenInNewTab, ConvertToTHB } from '../../../utils/func'
+import { useState,useEffect } from 'react'
+import { OpenInNewTab, ConvertToTHB, NumberWithCommas } from '../../../utils/func'
 const ItemsTable = () => {
-    const { items, setItems } = useState<[]>([
-        {
-            id: 1,
-            name: 'Alpha hopup chamber',
-            imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/07/1000922-2-600x450.jpg',
-            link: 'https://www.silentindustries.eu/product/silent-industries-mtw-alpha-hop-up-chamber/',
-            price: 75.60,
-            currency: 'EUR',
-            quanttity: 1
-        },
-        {
-            id: 2,
-            name: 'Nozzle',
-            imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/06/1001219-600x450.jpg',
-            link: 'https://www.silentindustries.eu/product/wolverine-mtw-inferno-nozzle/',
-            price: 18.84,
-            currency: 'EUR',
-            quanttity: 1
-        },
-    ])
-    console.log(items)
+    const [items,setItems] = useState([])
+    const [total,setTotal] = useState(0)
+    
+    const getItems = () => {
+        const fixItems = [
+            {
+                id: 1,
+                name: 'Alpha hopup chamber',
+                imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/07/1000922-2-600x450.jpg',
+                link: 'https://www.silentindustries.eu/product/silent-industries-mtw-alpha-hop-up-chamber/',
+                price: 75.60,
+                currency: 'EUR',
+                quantity: 1
+            },
+            {
+                id: 2,
+                name: 'Nozzle',
+                imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/06/1001219-600x450.jpg',
+                link: 'https://www.silentindustries.eu/product/wolverine-mtw-inferno-nozzle/',
+                price: 18.84,
+                currency: 'EUR',
+                quantity: 1
+            },
+        ]
+        setItems(fixItems)
+        
+    }
+
+    const calculateTotal = () => {
+        const newTotal = items.reduce((total, item)=>{
+            return total + (ConvertToTHB(item.price, item.currency)*item.quantity).toFixed(2)
+        }, 0)
+        setTotal(newTotal)
+    }
+    useEffect(getItems,[])
+
+    useEffect(() => console.log(items),[items])
     // increase item quantity
     const increase = (item) => {
         let newItems = items.map((i) => {
@@ -61,12 +77,13 @@ const ItemsTable = () => {
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Item</th>
                         <th>Name</th>
                         <th>Link</th>
                         <th>Price</th>
                         <th>Currency</th>
                         <th>Quantity</th>
-                        <th>Total</th>
+                        <th>Total(THB)</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
@@ -75,13 +92,13 @@ const ItemsTable = () => {
                         items.map((i, index) => (
 
                             < tr key={i.id}>
-                                <th scope="row">{index + 1}</th>
-                                <th scope="row">
+                                <td >{index + 1}</td>
+                                <td >
                                     <img src={i.imgUrl} style={{ width: '4rem' }} />
-                                </th>
+                                </td>
                                 <td>{i.name}</td>
                                 <td>
-                                    <Button variant="link" onClick={OpenInNewTab(i.link)} size="sm">Link</Button>
+                                    <Button variant="primary" onClick={()=>OpenInNewTab(i.link)} size="sm">Link</Button>
                                 </td>
                                 <td>{i.price}</td>
                                 <td>{i.currency}</td>
@@ -102,7 +119,7 @@ const ItemsTable = () => {
                                         +
                                     </Button>
                                 </td>
-                                <td>{ConvertToTHB(i.price, i.currency)}</td>
+                                <td>{`${NumberWithCommas((ConvertToTHB(i.price, i.currency)*i.quantity).toFixed(2))}`}</td>
                                 <td>
                                     <Button
                                         variant="primary"

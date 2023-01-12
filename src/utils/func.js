@@ -9,6 +9,9 @@ export function ConvertToTHB(price, currency) {
         return price
     }
 }
+export function NumberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
 
 export function OpenInNewTab(url){
     window.open(url, '_blank', 'noopener,noreferrer')
