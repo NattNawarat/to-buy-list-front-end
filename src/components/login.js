@@ -2,8 +2,12 @@ import { React, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import userService from '../services/users'
 import Cookies from 'universal-cookie'
+import { DecodeToken } from '../utils/func'
+import { useNavigate } from 'react-router-dom'
 const cookies = new Cookies()
+
 const Login = () => {
+    const navigate = useNavigate()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [login, setLogin] = useState(false)
@@ -21,7 +25,8 @@ const Login = () => {
                     path: '/',
                 })
                 // redirect to auth homepage
-                window.location.href = '/auth'
+                const username = DecodeToken().userName
+                navigate(`/auth/${username}/project`)
                 setLogin(true)
             })
             .catch((error) => {

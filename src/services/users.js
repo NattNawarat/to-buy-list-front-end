@@ -12,7 +12,16 @@ const login = object =>{
     return request
 }
 
+const exist = (userName,token) =>{
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.get(`${baseUrl}api/users/${userName}/login`,config).then((response) => response.exists).catch(()=>false)
+    return response
+}
+
 export default{
     register,
-    login
+    login,
+    exist
 }

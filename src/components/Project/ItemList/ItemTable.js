@@ -10,7 +10,7 @@ const ItemsTable = () => {
     const getItems = () => {
         const fixItems = [
             {
-                id: 1,
+                _id: 1,
                 name: 'Alpha hopup chamber',
                 imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/07/1000922-2-600x450.jpg',
                 link: 'https://www.silentindustries.eu/product/silent-industries-mtw-alpha-hop-up-chamber/',
@@ -19,7 +19,7 @@ const ItemsTable = () => {
                 quantity: 1
             },
             {
-                id: 2,
+                _id: 2,
                 name: 'Nozzle',
                 imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/06/1001219-600x450.jpg',
                 link: 'https://www.silentindustries.eu/product/wolverine-mtw-inferno-nozzle/',
@@ -45,7 +45,7 @@ const ItemsTable = () => {
     const increase = (item) => {
         let newItems = items.map((i) => {
 
-            if (item.id == i.id) {
+            if (item._id == i._id) {
                 i.quantity += 1
             }
             return i
@@ -57,7 +57,7 @@ const ItemsTable = () => {
     const decrease = (item) => {
         let newItems = items.map((i) => {
 
-            if (item.id == i.id) {
+            if (item._id == i._id) {
                 if (i.quantity > 1) {
                     i.quantity -= 1
                 }
@@ -68,7 +68,7 @@ const ItemsTable = () => {
 
     }
     const removeitem = (item) => {
-        let newItems = items.filter((i) => i.id != item.id)
+        let newItems = items.filter((i) => i._id != item._id)
         setItems(newItems)
     }
     return (
@@ -91,7 +91,7 @@ const ItemsTable = () => {
                     {
                         items.map((i, index) => (
 
-                            < tr key={i.id}>
+                            < tr key={i._id}>
                                 <td >{index + 1}</td>
                                 <td >
                                     <img src={i.imgUrl} style={{ width: '4rem' }} />

@@ -17,6 +17,7 @@ function App() {
                 <Route exact path="/table" element={<ItemsTable />} />
                 <Route element={<PrivateRoutes/>}>
                     <Route path="/auth" element={<AuthComponent />} />
+                    <Route path="/auth/:id/project" element={<ProjectGrid colCount={4} md={3}/>} />
                 </Route>
             </Routes>
         </Container>

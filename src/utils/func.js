@@ -1,3 +1,5 @@
+import jwt from 'jwt-decode'
+import Cookies from 'universal-cookie'
 export function ConvertToTHB(price, currency) {
     //const apiKey = process.env.REACT_APP_FOREX_API_KEY
     switch (currency) {
@@ -17,3 +19,9 @@ export function OpenInNewTab(url){
     window.open(url, '_blank', 'noopener,noreferrer')
 }
 
+export function DecodeToken(){
+    const cookies = new Cookies()
+    const token = cookies.get('TOKEN')
+    const user = jwt(token)
+    return user
+}
