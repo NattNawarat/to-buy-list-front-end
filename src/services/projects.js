@@ -17,7 +17,6 @@ const create = (name,describtion,items) => {
     }
     const response = axios.post(`${baseUrl}api/projects/${userName}`, newObject, config)
     return response.then(response => {
-        console.log(response.data)
         return response.data
     })
 }
