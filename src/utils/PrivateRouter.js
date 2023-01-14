@@ -7,11 +7,10 @@ const cookies = new Cookies()
 
 const PrivateRoutes = () => {
     const token = cookies.get('TOKEN')
-    console.log(token)
     if (!token) {
         return (<Navigate to="/"></Navigate>)
     }
-    if (!userService.exist(token)) {
+    if (!userService.exist()) {
         //username base on token not exists
         return (<Navigate to="/"></Navigate>)
     }

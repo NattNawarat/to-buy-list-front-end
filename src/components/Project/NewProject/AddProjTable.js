@@ -1,16 +1,16 @@
 import React from 'react'
 import TableRows from './TableRows'
-function AddDeleteTableRows({rowsData,setRowsData}) {
+const AddProjTable = ({rowsData,setRowsData}) => {
 
     const addTableRows = () => {
-            
+        event.preventDefault()
         const rowsInput = {
-            ImgUrl: '',
-            Name: '',
-            ProductUrl: '',
-            Price: '',
-            Currency: '',
-            Quantity: '',
+            imgUrl: '',
+            name: '',
+            productUrl: '',
+            price: '',
+            currency: '',
+            quantity: '',
         }
         setRowsData([...rowsData, rowsInput])
 
@@ -58,4 +58,4 @@ function AddDeleteTableRows({rowsData,setRowsData}) {
         </div>
     )
 }
-export default AddDeleteTableRows
+export default AddProjTable

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { DecodeToken, GetToken } from '../utils/func'
 const baseUrl = process.env.REACT_APP_BACKEND_URL
 
 
@@ -12,11 +13,13 @@ const login = object =>{
     return request
 }
 
-const exist = (userName,token) =>{
+const exist = () =>{
+    const token = GetToken()
+    const user = DecodeToken()
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.get(`${baseUrl}api/users/${userName}/login`,config).then((response) => response.exists).catch(()=>false)
+    const response = axios.get(`${baseUrl}api/users/${user.userName}/exists`,config).then((response) => response.exists).catch(()=>false)
     return response
 }
 
