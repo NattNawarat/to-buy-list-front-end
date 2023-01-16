@@ -15,11 +15,10 @@ const login = object =>{
 
 const exist = () =>{
     const token = GetToken()
-    const user = DecodeToken()
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.get(`${baseUrl}api/users/${user.userName}/exists`,config).then((response) => response.exists).catch(()=>false)
+    const response = axios.get(`${baseUrl}api/users/exists`,config).then((response) => response.exists).catch(()=>false)
     return response
 }
 

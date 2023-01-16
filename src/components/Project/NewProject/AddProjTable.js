@@ -1,4 +1,5 @@
 import React from 'react'
+import { Table } from 'react-bootstrap'
 import TableRows from './TableRows'
 const AddProjTable = ({rowsData,setRowsData}) => {
 
@@ -35,7 +36,7 @@ const AddProjTable = ({rowsData,setRowsData}) => {
         <div className="container">
             <div className="row">
                 <div className="col-sm-8">
-                    <table className="table">
+                    <Table >
                         <thead>
                             <tr>
                                 <th>ImgUrl</th>
@@ -50,7 +51,7 @@ const AddProjTable = ({rowsData,setRowsData}) => {
                         <tbody>
                             <TableRows rowsData={rowsData} deleteTableRows={deleteTableRows} handleChange={handleChange} />
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
                 <div className="col-sm-4">
                 </div>

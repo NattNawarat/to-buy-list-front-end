@@ -15,7 +15,7 @@ const create = (name,describtion,items) => {
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.post(`${baseUrl}api/projects/${userName}`, newObject, config)
+    const response = axios.post(`${baseUrl}api/projects/`, newObject, config)
     return response.then(response => {
         return response.data
     })
