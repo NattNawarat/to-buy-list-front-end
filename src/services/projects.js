@@ -1,0 +1,36 @@
+import axios from 'axios'
+import { DecodeToken, GetToken } from '../utils/func'
+const baseUrl = process.env.REACT_APP_BACKEND_URL
+
+
+const create = (name,describtion,items) => {
+    const newObject = {
+        name : name,
+        describtion : describtion,
+        items : items
+    }
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.post(`${baseUrl}/api/projects/`, newObject, config)
+    return response.then(response => {
+        return response.data
+    })
+}
+
+const getAll = () =>{
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.get(`${baseUrl}/api/projects/`, config)
+    return response.then(response => {
+        return response.data
+    })
+}
+
+export default{
+    create,
+    getAll
+}

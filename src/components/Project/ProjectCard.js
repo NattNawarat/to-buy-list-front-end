@@ -2,15 +2,15 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 
-const ProjectCard = ({title}) => {
+const ProjectCard = ({name,describtion,total}) => {
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            {/*<Card.Img variant="top" src="holder.js/100px180" />*/}
             <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title>{name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{total} THB</Card.Subtitle>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card content.
+                    {describtion}
                 </Card.Text>
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>
