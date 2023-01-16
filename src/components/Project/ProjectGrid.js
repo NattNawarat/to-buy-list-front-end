@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ProjectCard from './ProjectCard'
+import projectsService from '../../services/projects'
+import { ProjectTotalTHB, NumberWithCommas } from '../../utils/func'
 const ProjectGrid = ({ colCount, md }) => {
-    const titles = ['a', 'b', 'c', 'd', 'e']
-    const cards = titles.map(title => ProjectCard(title))
+    const [projects, setProjects] = useState([])
+    useEffect(() => {
+        projectsService.getAll()
+            .then(initialProjects => {
+                console.log(typeof initialProjects)
+                console.log(initialProjects)
+                setProjects(initialProjects)
+            })
+    }, [])
+    const [cards, setCards] = useState([])
+    useEffect(() => {
+        const newCards = projects.map(project => <ProjectCard key={project.id}
+            name={project.name}
+            describtion={project.describtion}
+            total={NumberWithCommas(ProjectTotalTHB(project))}/>)
+        setCards(newCards)
+    }, [projects])
+    
     let rowCount = Math.floor((cards.length) / colCount) + 1
 
     //Index is needed to keep track of the current element that we are one.
@@ -58,7 +76,7 @@ const ProjectGrid = ({ colCount, md }) => {
                 buildGrid()
             }
         </Container>
-        
+
     )
 }
 export default ProjectGrid

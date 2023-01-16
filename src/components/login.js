@@ -26,7 +26,7 @@ const Login = () => {
                 })
                 // redirect to auth homepage
                 const username = DecodeToken().userName
-                navigate(`/auth/${username}/project`)
+                navigate('/auth/project')
                 setLogin(true)
             })
             .catch((error) => {

@@ -35,3 +35,10 @@ export function DecodeToken(){
     const user = jwt(token)
     return user
 }
+
+export function ProjectTotalTHB(project){
+    const total = project.items.reduce((total,item) => {
+        return total + ConvertToTHB(item.price, item.currency)
+    },0)
+    return total
+}

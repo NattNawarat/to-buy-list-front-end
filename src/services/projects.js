@@ -10,18 +10,27 @@ const create = (name,describtion,items) => {
         items : items
     }
     const token = GetToken()
-    const user = DecodeToken()
-    const userName = user.userName
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.post(`${baseUrl}api/projects/`, newObject, config)
+    const response = axios.post(`${baseUrl}/api/projects/`, newObject, config)
     return response.then(response => {
         return response.data
     })
 }
 
+const getAll = () =>{
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.get(`${baseUrl}/api/projects/`, config)
+    return response.then(response => {
+        return response.data
+    })
+}
 
 export default{
-    create
+    create,
+    getAll
 }
