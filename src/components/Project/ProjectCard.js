@@ -1,8 +1,10 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import { useNavigate } from 'react-router-dom'
 
-const ProjectCard = ({name,describtion,total}) => {
+const ProjectCard = ({name,describtion,total,projectId}) => {
+    const navigate = useNavigate()
     return (
         <Card style={{ width: '18rem' }}>
             {/*<Card.Img variant="top" src="holder.js/100px180" />*/}
@@ -12,7 +14,7 @@ const ProjectCard = ({name,describtion,total}) => {
                 <Card.Text>
                     {describtion}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary" onClick={()=>{navigate(`/auth/project/${projectId}`)}}>Go somewhere</Button>
             </Card.Body>
         </Card>
     )

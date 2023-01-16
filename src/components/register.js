@@ -13,7 +13,6 @@ const Register = () => {
             username:username,
             password:password
         }
-        console.log(newUser)
         userService.register(newUser)
     }
     
