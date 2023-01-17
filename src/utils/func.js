@@ -36,9 +36,8 @@ export function DecodeToken(){
     return user
 }
 
-export function ProjectTotalTHB(project){
-    const total = project.items.reduce((total,item) => {
-        return total + ConvertToTHB(item.price, item.currency)
-    },0)
+export function ProjectTotalTHB(items){
+    const total = items.reduce((total,item) => 
+        total + (ConvertToTHB(item.price, item.currency)*item.quantity),0)
     return total
 }

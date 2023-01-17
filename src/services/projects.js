@@ -41,8 +41,20 @@ const getById = (id) =>{
     })
 }
 
+const updateItems = (id,newItems) =>{
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.put(`${baseUrl}/api/projects/${id}/items`, newItems, config)
+    return response.then(response => {
+        return response.data
+    })
+}
+
 export default{
     create,
     getAll,
-    getById
+    getById,
+    updateItems
 }

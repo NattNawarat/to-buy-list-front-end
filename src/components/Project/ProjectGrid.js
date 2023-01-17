@@ -18,7 +18,7 @@ const ProjectGrid = ({ colCount, md }) => {
         const newCards = projects.map(project => <ProjectCard key={project.id}
             name={project.name}
             describtion={project.describtion}
-            total={NumberWithCommas(ProjectTotalTHB(project))}
+            total={NumberWithCommas(ProjectTotalTHB(project.items))}
             projectId={project.id}
         />)
         setCards(newCards)

@@ -14,7 +14,6 @@ const ItemsTable = ({items,setItems,updateItems}) => {
         setTotal(newTotal)
     }
 
-    useEffect(() => console.log(items), [items])
     // increase item quantity
     const increase = (item) => {
         let newItems = items.map((i) => {
