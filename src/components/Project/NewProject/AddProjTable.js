@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 import TableRows from './TableRows'
 const AddProjTable = ({rowsData,setRowsData}) => {
 
@@ -45,7 +45,7 @@ const AddProjTable = ({rowsData,setRowsData}) => {
                                 <th>Price</th>
                                 <th>Currency</th>
                                 <th>Quantity</th>
-                                <th><button className="btn btn-outline-success" onClick={addTableRows} >+</button></th>
+                                <th><Button variant='outline-success' onClick={addTableRows} >+</Button></th>
                             </tr>
                         </thead>
                         <tbody>

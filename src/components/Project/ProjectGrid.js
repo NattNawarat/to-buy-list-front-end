@@ -10,8 +10,6 @@ const ProjectGrid = ({ colCount, md }) => {
     useEffect(() => {
         projectsService.getAll()
             .then(initialProjects => {
-                console.log(typeof initialProjects)
-                console.log(initialProjects)
                 setProjects(initialProjects)
             })
     }, [])
@@ -20,10 +18,12 @@ const ProjectGrid = ({ colCount, md }) => {
         const newCards = projects.map(project => <ProjectCard key={project.id}
             name={project.name}
             describtion={project.describtion}
-            total={NumberWithCommas(ProjectTotalTHB(project))}/>)
+            total={NumberWithCommas(ProjectTotalTHB(project.items))}
+            projectId={project.id}
+        />)
         setCards(newCards)
     }, [projects])
-    
+
     let rowCount = Math.floor((cards.length) / colCount) + 1
 
     //Index is needed to keep track of the current element that we are one.

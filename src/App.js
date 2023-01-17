@@ -6,6 +6,7 @@ import PrivateRoutes from './utils/PrivateRouter'
 import ProjectGrid from './components/Project/ProjectGrid'
 import ItemsTable from './components/Project/ExistProject/ItemTable'
 import AddNewProject from './components/Project/NewProject/AddNewProject'
+import Project from './components/Project/ExistProject/Project'
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route element={<PrivateRoutes />}>
                     <Route exact path="/auth/project/add" element={<AddNewProject />} />
                     <Route path="/auth/project" element={<ProjectGrid colCount={4} md={3} />} />
+                    <Route path="/auth/project/:id" element={<Project/>} />
                 </Route>
             </Routes>
         </Container>

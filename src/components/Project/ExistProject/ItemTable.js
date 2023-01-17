@@ -3,34 +3,9 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import { useState, useEffect } from 'react'
 import { OpenInNewTab, ConvertToTHB, NumberWithCommas } from '../../../utils/func'
-const ItemsTable = () => {
-    const [items, setItems] = useState([])
+const ItemsTable = ({items,setItems,updateItems}) => {
     const [total, setTotal] = useState(0)
 
-    const getItems = () => {
-        const fixItems = [
-            {
-                _id: 1,
-                name: 'Alpha hopup chamber',
-                imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/07/1000922-2-600x450.jpg',
-                link: 'https://www.silentindustries.eu/product/silent-industries-mtw-alpha-hop-up-chamber/',
-                price: 75.60,
-                currency: 'EUR',
-                quantity: 1
-            },
-            {
-                _id: 2,
-                name: 'Nozzle',
-                imgUrl: 'https://www.silentindustries.eu/wp-content/uploads/2022/06/1001219-600x450.jpg',
-                link: 'https://www.silentindustries.eu/product/wolverine-mtw-inferno-nozzle/',
-                price: 18.84,
-                currency: 'EUR',
-                quantity: 1
-            },
-        ]
-        setItems(fixItems)
-
-    }
 
     const calculateTotal = () => {
         const newTotal = items.reduce((total, item) => {
@@ -38,9 +13,7 @@ const ItemsTable = () => {
         }, 0)
         setTotal(newTotal)
     }
-    useEffect(getItems, [])
 
-    useEffect(() => console.log(items), [items])
     // increase item quantity
     const increase = (item) => {
         let newItems = items.map((i) => {
