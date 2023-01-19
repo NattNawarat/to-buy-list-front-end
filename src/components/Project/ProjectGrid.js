@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import ProjectCard from './ProjectCard'
 import projectsService from '../../services/projects'
 import { ProjectTotalTHB, NumberWithCommas } from '../../utils/func'
+import SharedNavbar from '../SharedNavbar'
 const ProjectGrid = ({ colCount, md }) => {
     const [projects, setProjects] = useState([])
     useEffect(() => {
@@ -20,6 +21,8 @@ const ProjectGrid = ({ colCount, md }) => {
             describtion={project.describtion}
             total={NumberWithCommas(ProjectTotalTHB(project.items))}
             projectId={project.id}
+            projects={projects}
+            setProjects={setProjects}
         />)
         setCards(newCards)
     }, [projects])
@@ -71,12 +74,14 @@ const ProjectGrid = ({ colCount, md }) => {
     }
 
     return (
-        <Container className='Container'>
-            {
-                buildGrid()
-            }
-        </Container>
-
+        <>
+            <SharedNavbar/>
+            <Container className='Container'>
+                {
+                    buildGrid()
+                }
+            </Container>
+        </>
     )
 }
 export default ProjectGrid

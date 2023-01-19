@@ -6,6 +6,7 @@ import projectsService from '../../../services/projects'
 import { NumberWithCommas, ProjectTotalTHB } from '../../../utils/func'
 import AddItem from './AddItem'
 import ItemsTable from './ItemTable'
+import SharedNavbar from '../../SharedNavbar'
 const Project = () => {
     const { id } = useParams()
     const [projectName, setProjectName] = useState('')
@@ -43,6 +44,7 @@ const Project = () => {
     }
     return (
         <>
+            <SharedNavbar/>
             <h1>{projectName}</h1>
             <p>{projectDesc}</p>
             {<ItemsTable items={items} setItems={setItems} updateItems={updateItems} />}

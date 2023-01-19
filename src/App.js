@@ -7,7 +7,7 @@ import ProjectGrid from './components/Project/ProjectGrid'
 import ItemsTable from './components/Project/ExistProject/ItemTable'
 import AddNewProject from './components/Project/NewProject/AddNewProject'
 import Project from './components/Project/ExistProject/Project'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
     return (
         <Container>

@@ -52,9 +52,21 @@ const updateItems = (id,newItems) =>{
     })
 }
 
+const deleteProject = (id) =>{
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.delete(`${baseUrl}/api/projects/${id}`, config)
+    return response.then(response => {
+        return response.data
+    })
+}
+
 export default{
     create,
     getAll,
     getById,
-    updateItems
+    updateItems,
+    deleteProject
 }

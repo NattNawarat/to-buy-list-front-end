@@ -7,10 +7,12 @@ export default function Account() {
     return (
         <Row>
             {/* Register */}
-            <Col xs={12} sm={12} md={6} lg={6}>
-                <Register />
-            </Col>
-
+            {   /*
+                <Col xs={12} sm={12} md={6} lg={6}>
+                    <Register />
+                </Col>
+                */
+            }
             {/* Login */}
             <Col xs={12} sm={12} md={6} lg={6}>
                 <Login />

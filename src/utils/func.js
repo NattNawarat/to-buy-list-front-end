@@ -41,3 +41,7 @@ export function ProjectTotalTHB(items){
         total + (ConvertToTHB(item.price, item.currency)*item.quantity),0)
     return total
 }
+
+export function Logout(){
+    cookies.remove('TOKEN', { path: '/' })
+}

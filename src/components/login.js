@@ -70,12 +70,6 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
-            {/* display success message */}
-            {login ? (
-                <p className="text-success">You Are Logged in Successfully</p>
-            ) : (
-                <p className="text-danger">You Are Not Logged in</p>
-            )}
         </div>
     )
 }
