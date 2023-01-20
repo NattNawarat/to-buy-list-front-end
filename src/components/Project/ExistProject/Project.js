@@ -40,6 +40,7 @@ const Project = ({currencies}) => {
         projectsService.updateItems(id, newItems)
             .then(project => {
                 updateProject(project)
+                window.location.reload()
             })
     }
     return (

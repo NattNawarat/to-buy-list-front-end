@@ -71,7 +71,7 @@ const ItemsTable = ({currencies,items,setItems,updateItems}) => {
                             </td>
                             <td>{i.name}</td>
                             <td>
-                                <Button variant="primary" onClick={() => OpenInNewTab(i.link)} size="sm">Link</Button>
+                                <Button variant="primary" onClick={() => OpenInNewTab(i.productUrl)} size="sm">Link</Button>
                             </td>
                             <td>{i.price}</td>
                             <td>{i.currency}</td>
