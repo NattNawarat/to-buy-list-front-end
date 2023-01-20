@@ -6,17 +6,22 @@ export function IsNumeric(str) {
     if (typeof str != 'string') return false // we only process strings!  
     return (!isNaN(str) && !isNaN(parseFloat(str)))
 }
-export function ConvertToTHB(price, currency) {
-    //const apiKey = process.env.REACT_APP_FOREX_API_KEY
-    switch (currency) {
-    case 'EUR':
-        return price * 35
-    case 'USD':
-        return price * 37
-    default:
+
+export function ConvertToTHB(price, priceCurrency, currencies) {
+    if (priceCurrency === 'THB'){
         return price
     }
+    else{
+        const rate = currencies.find(x => x.currency === priceCurrency)
+        if (rate){
+            return Number(price / rate.rate)
+        }
+        else{
+            return 0
+        }
+    }
 }
+
 export function NumberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
@@ -36,9 +41,9 @@ export function DecodeToken(){
     return user
 }
 
-export function ProjectTotalTHB(items){
+export function ProjectTotalTHB(items,currencies){
     const total = items.reduce((total,item) => 
-        total + (ConvertToTHB(item.price, item.currency)*item.quantity),0)
+        total + (ConvertToTHB(item.price, item.currency,currencies)*item.quantity),0)
     return total
 }
 

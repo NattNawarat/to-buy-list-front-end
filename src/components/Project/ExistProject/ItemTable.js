@@ -3,13 +3,14 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import { useState, useEffect } from 'react'
 import { OpenInNewTab, ConvertToTHB, NumberWithCommas } from '../../../utils/func'
-const ItemsTable = ({items,setItems,updateItems}) => {
+const ItemsTable = ({currencies,items,setItems,updateItems}) => {
+    console.log(currencies)
     const [total, setTotal] = useState(0)
 
 
     const calculateTotal = () => {
         const newTotal = items.reduce((total, item) => {
-            return total + (ConvertToTHB(item.price, item.currency) * item.quantity).toFixed(2)
+            return total + (ConvertToTHB(item.price, item.currency,currencies) * item.quantity).toFixed(2)
         }, 0)
         setTotal(newTotal)
     }
@@ -91,7 +92,7 @@ const ItemsTable = ({items,setItems,updateItems}) => {
                                     +
                                 </Button>
                             </td>
-                            <td>{`${NumberWithCommas((ConvertToTHB(i.price, i.currency) * i.quantity).toFixed(2))}`}</td>
+                            <td>{`${NumberWithCommas((ConvertToTHB(i.price, i.currency,currencies) * i.quantity).toFixed(2))}`}</td>
                             <td>
                                 <Button
                                     variant="primary"

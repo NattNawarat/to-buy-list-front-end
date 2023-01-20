@@ -7,7 +7,7 @@ import { NumberWithCommas, ProjectTotalTHB } from '../../../utils/func'
 import AddItem from './AddItem'
 import ItemsTable from './ItemTable'
 import SharedNavbar from '../../SharedNavbar'
-const Project = () => {
+const Project = ({currencies}) => {
     const { id } = useParams()
     const [projectName, setProjectName] = useState('')
     const [projectDesc, setProjectDesc] = useState('')
@@ -32,7 +32,7 @@ const Project = () => {
     }, [])
 
     useEffect(() => {
-        setTotal(NumberWithCommas(ProjectTotalTHB(items)))
+        setTotal(NumberWithCommas(ProjectTotalTHB(items,currencies).toFixed(2)))
     }, [items])
 
     const updateItems = () => {
@@ -47,7 +47,7 @@ const Project = () => {
             <SharedNavbar/>
             <h1>{projectName}</h1>
             <p>{projectDesc}</p>
-            {<ItemsTable items={items} setItems={setItems} updateItems={updateItems} />}
+            {<ItemsTable currencies={currencies} items={items} setItems={setItems} updateItems={updateItems} />}
             <Button variant='success' onClick={() => updateItems()}>update items</Button>
             <h3>{total} THB</h3>
             <h2>Add item</h2>

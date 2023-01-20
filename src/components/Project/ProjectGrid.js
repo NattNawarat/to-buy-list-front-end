@@ -6,7 +6,7 @@ import ProjectCard from './ProjectCard'
 import projectsService from '../../services/projects'
 import { ProjectTotalTHB, NumberWithCommas } from '../../utils/func'
 import SharedNavbar from '../SharedNavbar'
-const ProjectGrid = ({ colCount, md }) => {
+const ProjectGrid = ({ currencies ,colCount, md }) => {
     const [projects, setProjects] = useState([])
     useEffect(() => {
         projectsService.getAll()
@@ -19,7 +19,7 @@ const ProjectGrid = ({ colCount, md }) => {
         const newCards = projects.map(project => <ProjectCard key={project.id}
             name={project.name}
             describtion={project.describtion}
-            total={NumberWithCommas(ProjectTotalTHB(project.items))}
+            total={NumberWithCommas(ProjectTotalTHB(project.items,currencies).toFixed(2))}
             projectId={project.id}
             projects={projects}
             setProjects={setProjects}

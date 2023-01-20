@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { DecodeToken, GetToken } from '../utils/func'
+import {GetToken } from '../utils/func'
 const baseUrl = process.env.REACT_APP_BACKEND_URL
 
 
