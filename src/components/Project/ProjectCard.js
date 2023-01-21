@@ -55,7 +55,7 @@ const ProjectCard = ({ name, describtion, total, projectId, projects, setProject
     const deleteMessage = 'Are you sure you want to delete this project?'
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card>
             {/*<Card.Img variant="top" src="holder.js/100px180" />*/}
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
