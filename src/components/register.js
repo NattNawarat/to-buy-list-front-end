@@ -18,7 +18,7 @@ const Register = () => {
     
     return (
         <div>
-            <h2>Register</h2>
+            <h2>{'Login with "example" user (for demo purpose only)'}</h2>
             <Form>
                 {/* email */}
                 <Form.Group controlId="formBasicUsername">
@@ -27,8 +27,8 @@ const Register = () => {
                         type="username" 
                         name="username"
                         placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value="example"
+                        
                     />
                 </Form.Group>
 

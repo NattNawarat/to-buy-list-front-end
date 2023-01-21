@@ -19,7 +19,7 @@ const SharedNavbar= () => {
         <>
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <Navbar.Brand href="/auth/project">Let Me Buy</Navbar.Brand>
+                    <Navbar.Brand href="/auth/project">To Buy List</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">

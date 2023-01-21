@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button'
 import { useState, useEffect } from 'react'
 import { OpenInNewTab, ConvertToTHB, NumberWithCommas } from '../../../utils/func'
 const ItemsTable = ({currencies,items,setItems,updateItems}) => {
-    console.log(currencies)
     const [total, setTotal] = useState(0)
 
 

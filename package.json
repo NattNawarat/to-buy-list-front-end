@@ -21,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:ui": "rm -rf build && cd ../to-buy-list-front-end && npm run build && cp -r build ../to-buy-list-back-end",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

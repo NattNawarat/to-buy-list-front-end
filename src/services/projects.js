@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {GetToken } from '../utils/func'
-const baseUrl = process.env.REACT_APP_BACKEND_URL
+const baseUrl = '/api/projects'
 
 
 const create = (name,describtion,items) => {
@@ -13,7 +13,7 @@ const create = (name,describtion,items) => {
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.post(`${baseUrl}/api/projects/`, newObject, config)
+    const response = axios.post(`${baseUrl}`, newObject, config)
     return response.then(response => {
         return response.data
     })
@@ -24,7 +24,7 @@ const getAll = () =>{
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.get(`${baseUrl}/api/projects/`, config)
+    const response = axios.get(`${baseUrl}`, config)
     return response.then(response => {
         return response.data
     })
@@ -35,7 +35,7 @@ const getById = (id) =>{
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.get(`${baseUrl}/api/projects/${id}`, config)
+    const response = axios.get(`${baseUrl}/${id}`, config)
     return response.then(response => {
         return response.data
     })
@@ -46,7 +46,7 @@ const updateItems = (id,newItems) =>{
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.put(`${baseUrl}/api/projects/${id}/items`, newItems, config)
+    const response = axios.put(`${baseUrl}/${id}/items`, newItems, config)
     return response.then(response => {
         return response.data
     })
@@ -57,7 +57,7 @@ const deleteProject = (id) =>{
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.delete(`${baseUrl}/api/projects/${id}`, config)
+    const response = axios.delete(`${baseUrl}/${id}`, config)
     return response.then(response => {
         return response.data
     })
