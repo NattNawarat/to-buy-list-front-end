@@ -5,13 +5,12 @@ import Col from 'react-bootstrap/Col'
 import ProjectCard from './ProjectCard'
 import projectsService from '../../services/projects'
 import { ProjectTotalTHB, NumberWithCommas } from '../../utils/func'
-const ProjectGrid = ({ colCount, md }) => {
+import SharedNavbar from '../SharedNavbar'
+const ProjectGrid = ({ currencies ,colCount, md }) => {
     const [projects, setProjects] = useState([])
     useEffect(() => {
         projectsService.getAll()
             .then(initialProjects => {
-                console.log(typeof initialProjects)
-                console.log(initialProjects)
                 setProjects(initialProjects)
             })
     }, [])
@@ -20,10 +19,14 @@ const ProjectGrid = ({ colCount, md }) => {
         const newCards = projects.map(project => <ProjectCard key={project.id}
             name={project.name}
             describtion={project.describtion}
-            total={NumberWithCommas(ProjectTotalTHB(project))}/>)
+            total={NumberWithCommas(ProjectTotalTHB(project.items,currencies).toFixed(2))}
+            projectId={project.id}
+            projects={projects}
+            setProjects={setProjects}
+        />)
         setCards(newCards)
     }, [projects])
-    
+
     let rowCount = Math.floor((cards.length) / colCount) + 1
 
     //Index is needed to keep track of the current element that we are one.
@@ -71,12 +74,14 @@ const ProjectGrid = ({ colCount, md }) => {
     }
 
     return (
-        <Container className='Container'>
-            {
-                buildGrid()
-            }
-        </Container>
-
+        <>
+            <SharedNavbar/>
+            <Container className='Container'>
+                {
+                    buildGrid()
+                }
+            </Container>
+        </>
     )
 }
 export default ProjectGrid

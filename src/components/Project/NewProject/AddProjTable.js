@@ -1,7 +1,7 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 import TableRows from './TableRows'
-const AddProjTable = ({rowsData,setRowsData}) => {
+const AddProjTable = ({ rowsData, setRowsData }) => {
 
     const addTableRows = () => {
         event.preventDefault()
@@ -33,30 +33,22 @@ const AddProjTable = ({rowsData,setRowsData}) => {
 
     }
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-sm-8">
-                    <Table >
-                        <thead>
-                            <tr>
-                                <th>ImgUrl</th>
-                                <th>Name</th>
-                                <th>ProductUrl</th>
-                                <th>Price</th>
-                                <th>Currency</th>
-                                <th>Quantity</th>
-                                <th><button className="btn btn-outline-success" onClick={addTableRows} >+</button></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <TableRows rowsData={rowsData} deleteTableRows={deleteTableRows} handleChange={handleChange} />
-                        </tbody>
-                    </Table>
-                </div>
-                <div className="col-sm-4">
-                </div>
-            </div>
-        </div>
+        <Table >
+            <thead>
+                <tr>
+                    <th>ImgUrl</th>
+                    <th>Name</th>
+                    <th>ProductUrl</th>
+                    <th>Price</th>
+                    <th>Currency</th>
+                    <th>Quantity</th>
+                    <th><Button variant='outline-success' onClick={addTableRows} >+</Button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <TableRows rowsData={rowsData} deleteTableRows={deleteTableRows} handleChange={handleChange} />
+            </tbody>
+        </Table>
     )
 }
 export default AddProjTable

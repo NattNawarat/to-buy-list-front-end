@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { DecodeToken, GetToken } from '../utils/func'
-const baseUrl = process.env.REACT_APP_BACKEND_URL
+import {GetToken } from '../utils/func'
+const baseUrl = '/api/projects'
 
 
 const create = (name,describtion,items) => {
@@ -13,7 +13,7 @@ const create = (name,describtion,items) => {
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.post(`${baseUrl}/api/projects/`, newObject, config)
+    const response = axios.post(`${baseUrl}`, newObject, config)
     return response.then(response => {
         return response.data
     })
@@ -24,7 +24,40 @@ const getAll = () =>{
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     }
-    const response = axios.get(`${baseUrl}/api/projects/`, config)
+    const response = axios.get(`${baseUrl}`, config)
+    return response.then(response => {
+        return response.data
+    })
+}
+
+const getById = (id) =>{
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.get(`${baseUrl}/${id}`, config)
+    return response.then(response => {
+        return response.data
+    })
+}
+
+const updateItems = (id,newItems) =>{
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.put(`${baseUrl}/${id}/items`, newItems, config)
+    return response.then(response => {
+        return response.data
+    })
+}
+
+const deleteProject = (id) =>{
+    const token = GetToken()
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    }
+    const response = axios.delete(`${baseUrl}/${id}`, config)
     return response.then(response => {
         return response.data
     })
@@ -32,5 +65,8 @@ const getAll = () =>{
 
 export default{
     create,
-    getAll
+    getAll,
+    getById,
+    updateItems,
+    deleteProject
 }

@@ -9,7 +9,7 @@ const TableRows = ({ rowsData, deleteTableRows, handleChange }) => {
             return (
                 <tr key={index}>
                     <td><textarea type="text" value={imgUrl} onChange={(evnt) => (handleChange(index, evnt))} rows="1" cols="200" name="imgUrl" className="form-control" /> </td>
-                    <td><input type="text" value={name} onChange={(evnt) => (handleChange(index, evnt))} name="name" className="form-control" /> </td>
+                    <td><textarea type="text" value={name} onChange={(evnt) => (handleChange(index, evnt))} rows="1" cols="100" name="name" className="form-control" /> </td>
                     <td><textarea type="text" value={productUrl} onChange={(evnt) => (handleChange(index, evnt))} rows="1" cols="200" name="productUrl" className="form-control" /> </td>
                     <td><input type="number" value={price}
                         onChange={(evnt) => {

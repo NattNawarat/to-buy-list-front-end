@@ -6,18 +6,15 @@ import { DecodeToken } from '../utils/func'
 import { useNavigate } from 'react-router-dom'
 const cookies = new Cookies()
 
-const Login = () => {
+const LoginExample = () => {
     const navigate = useNavigate()
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [login, setLogin] = useState(false)
     const handleSubmit = (e) => {
         // prevent the form from refreshing the whole page
         e.preventDefault()
         // send login request
         const userObject = {
-            username: username,
-            password: password
+            username: 'example',
+            password: 'password'
         }
         userService.login(userObject)
             .then((result) => {
@@ -27,7 +24,6 @@ const Login = () => {
                 // redirect to auth homepage
                 const username = DecodeToken().userName
                 navigate('/auth/project')
-                setLogin(true)
             })
             .catch((error) => {
                 console.log(error)
@@ -35,7 +31,7 @@ const Login = () => {
     }
     return (
         <div>
-            <h2>Login</h2>
+            <h2>Login with DEMO account</h2>
             <Form onSubmit={(e) => handleSubmit(e)}>
                 {/* username */}
                 <Form.Group controlId="formBasicUsername">
@@ -43,9 +39,7 @@ const Login = () => {
                     <Form.Control
                         type="username"
                         name="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Enter username"
+                        value="example"
                     />
                 </Form.Group>
 
@@ -55,9 +49,7 @@ const Login = () => {
                     <Form.Control
                         type="password"
                         name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
+                        value="password"
                     />
                 </Form.Group>
 
@@ -73,4 +65,4 @@ const Login = () => {
         </div>
     )
 }
-export default Login
+export default LoginExample
