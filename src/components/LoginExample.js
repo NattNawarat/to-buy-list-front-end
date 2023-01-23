@@ -31,7 +31,7 @@ const LoginExample = () => {
     }
     return (
         <div>
-            <h2>Login with DEMO account</h2>
+            <h2>Login with DEMO ACCOUNT</h2>
             <Form onSubmit={(e) => handleSubmit(e)}>
                 {/* username */}
                 <Form.Group controlId="formBasicUsername">
