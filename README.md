@@ -1,4 +1,4 @@
-# Project Name
+# ToBuyList Frontend
 
 This is frontend for ToBuyList https://tobuylist.drunkorca.com/
 
