@@ -11,7 +11,7 @@ export default function Account() {
                 <h1> To Buy List </h1>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <h4> Create ,Edit and Calculate you hooby project budget. </h4>
+                <h4> Create ,Edit and Calculate you hobby project budget. </h4>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <p> NOTE: right now register service for external user is unavailable please LOGIN WITH DEMO ACCOUNT to see website functionality.</p>
